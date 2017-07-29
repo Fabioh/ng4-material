@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ImageServiceService } from './providers/image-service.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AppComponent } from './app.component';
     MdToolbarModule,
     MdIconModule
   ],
-  providers: [],
+  providers: [ImageServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
