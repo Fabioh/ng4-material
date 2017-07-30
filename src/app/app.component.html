@@ -13,7 +13,11 @@
   <button md-menu-item> Help </button>
 </md-menu>
 
-<md-card class="example-card" *ngFor="let data of (myData ? myData.slice(0,10): []); let i = index">
+<div>
+  <p [hidden]="!loading">Loading images...</p>
+</div>
+
+<md-card class="example-card" *ngFor="let data of this.myData; let i = index">
 
   <img md-card-image src="{{ data.url }}">
   <md-card-header>
@@ -25,4 +29,4 @@
     <button md-button>SHARE</button>
   </md-card-actions>
   
-</md-card>
+</md-card> 
