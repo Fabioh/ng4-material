@@ -1,6 +1,3 @@
-<!-- {{this.imageService.results}}  -->
-
-
 <md-toolbar color="primary">
 
     <span>MyCompany</span>
@@ -17,10 +14,10 @@
 </md-menu>
 
 <div>
-  <p *ngIf="loading">Loading...</p>
+  <p [hidden]="!loading">Loading images...</p>
 </div>
 
-<md-card class="example-card" *ngFor="let data of (this.imageService.results ? this.imageService.results.slice(0,10): []); let i = index">
+<md-card class="example-card" *ngFor="let data of this.myData; let i = index">
 
   <img md-card-image src="{{ data.url }}">
   <md-card-header>

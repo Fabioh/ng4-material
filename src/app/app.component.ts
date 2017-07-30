@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable, Subject } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import { ImageServiceService } from './providers/image-service.service';
+import { ImageService } from './providers/image.service';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +8,18 @@ import { ImageServiceService } from './providers/image-service.service';
 })
 export class AppComponent {
   title = 'app';
-  // myData: Array<any>;
+  myData: any[];
   loading: boolean = false;
 
-  constructor (private imageService: ImageServiceService) {
-    // this.http.get('https://jsonplaceholder.typicode.com/photos')
-    //   .map(response => response.json())
-    //   .subscribe(res => this.myData = res);
-    // this.myData =  this.imageService.results;
+  constructor (private imageService: ImageService) {
     this.loadImages();
   }
 
-  loadImages() {
+  private loadImages() {
     this.loading = true;
-    this.imageService.loadImages().then( () => this.loading = false);
+    this.imageService.loadImages().then((result: any[]) => {
+      this.myData = result;
+      this.loading = false;
+    });
   }
 }
